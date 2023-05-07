@@ -1,52 +1,50 @@
-neo4j-client
+libneo4j-omni - neo4j-client for all Neo4j versions
 ============
-
 
 About
 -----
 
-neo4j-client is a command shell (CLI) for Neo4j. It supports secure connections
+neo4j-client is a command shell (CLI) for Neo4j written by Chris
+Leishman (@cleishm). It supports secure connections
 to Neo4j server, sending of statements (including multiline statements),
 persistent command history, and rendering of results to tables or CSV.
 
-neo4j-client utilizes the [Bolt Network Protocol](https://boltprotocol.org), and
-will work with any server that supports Bolt.
+neo4j-client utilizes the [Bolt Network Protocol](https://neo4j.com/docs/bolt/current/bolt/), and will work with any server that supports Bolt.
+ 
+This version of neo4j-client is maintained by @majensen, and attempts to
+stay current with the latest version of Bolt and the [Neo4j
+server](https://neo4j.com). At some time, these improvements may fold
+in to the orginal repo at https://github.com/cleishm/libneo4j-client.
 
-For more details, see [the project page](https://neo4j-client.net) and
-the [FAQ](https://github.com/cleishm/libneo4j-client/wiki/FAQ).
+Features
+--------
 
+libneo4j-omni includes all features of
+[libneo4j-client](https://github.com/cleishm/libneo4j-client), plus
+the following:
+
+- Support for Neo4j versions 3, 4, and 5, including
+  - Transactions
+  - Database selection
+  - Element IDs on graph entities for Neo4j 5+
+- Most [Structure-based data
+  types](https://neo4j.com/docs/bolt/current/bolt/structure-semantics/)
+  returned by the Neo4j server along with Node, Relationship, and
+  Path, including
+  - Date, Time, LocalTime, DateTime, LocalDateTime, Duration, Point2D, Point3D
+- Meaningful rendering of supported data types in the REPL client
+- Hack the version negotiation handshake with `--support`, e.g. 
+  `neo4j-client --support 6.0,5.7-5.0 <host>`
 
 Requirements
 ------------
 
 neo4j-client is known to work on GNU/Linux, Mac OS X and FreeBSD. It
-support Neo4j through v4.0.
+support Neo4j through version 5.
 
 
 Getting Started
 ---------------
-
-If you're using Mac OS X, neo4j-client can be installed using homebrew:
-
-```console
-$ brew install cleishm/neo4j/neo4j-client
-```
-
-If you're using Ubuntu, neo4j-client can be install using APT:
-
-```console
-$ sudo add-apt-repository ppa:cleishm/neo4j
-$ sudo apt-get update
-$ sudo apt-get install neo4j-client libneo4j-client-dev
-```
-
-There are also packages available for other platforms, including
-[Debian](https://packages.debian.org/source/sid/libneo4j-client),
-[Fedora](https://build.opensuse.org/package/binaries/home:cleishm/libneo4j-client/Fedora_23),
-[CentOS](https://build.opensuse.org/package/binaries/home:cleishm/libneo4j-client/CentOS_7) and
-[openSUSE](https://build.opensuse.org/package/binaries/home:cleishm/libneo4j-client/openSUSE_Tumbleweed).
-
-Otherwise, please see [Building](#building) below.
 
 
 neo4j-client Usage
@@ -173,8 +171,7 @@ libneo4j-client takes care of all the detail of establishing a session with a
 Neo4j server, sending statements for evaluation, and retrieving results.
 
 libneo4j-client provides a single C header file, `neo4j-client.h`, for
-inclusion in source code using the libneo4j-client API. The API is described in
-the [API Documentation](#api_documentation).
+inclusion in source code using the libneo4j-client API. 
 
 libneo4j-client can be included in your project by linking the library at
 compile time, typically using the linking flags
@@ -182,18 +179,6 @@ compile time, typically using the linking flags
 a [pkg-config]( https://wiki.freedesktop.org/www/Software/pkg-config/)
 description file, enabling you to obtain the required flags using
 `pkg-config --libs libneo4j-client`.
-
-
-API Documentation
------------------
-
-API documentation for the latest release is available at
-[https://neo4j-client.net/doc/latest/neo4j-client\_8h.html](
-[https://neo4j-client.net/doc/latest/neo4j-client_8h.html).
-
-Documentation can be built using `make doc`, which will use doxygen to generate
-documentation and output it into the `doc/` directory of the libneo4j-client
-source tree. See [Building](#building) below.
 
 
 Example
@@ -247,18 +232,8 @@ int main(int argc, char *argv[])
 Building
 --------
 
-To use neo4j-client or libneo4j-client, consider installation using the package
-management system for your operating system (currently
-[Mac OS X](#getting_started),
-[Debian](https://packages.debian.org/source/sid/libneo4j-client),
-[Ubuntu](#getting_started),
-[Fedora](https://build.opensuse.org/package/binaries/home:cleishm/libneo4j-client/Fedora_23),
-[CentOS](https://build.opensuse.org/package/binaries/home:cleishm/libneo4j-client/CentOS_7) and
-[openSUSE](https://build.opensuse.org/package/binaries/home:cleishm/libneo4j-client/openSUSE_Tumbleweed)).
-
-If neo4j-client is not available via your package management system,
-please [download the latest release](
-https://github.com/cleishm/libneo4j-client/releases), unpack and then:
+Please [download the latest release](
+https://github.com/majensen/libneo4j-omni/releases), unpack and then:
 
 ```console
 $ ./configure
@@ -271,7 +246,7 @@ configure with `--without-tls`.
 
 neo4j-client also requires some dependencies to build, including
 [libedit](http://thrysoee.dk/editline/) and
-[libcypher-parser](https://git.io/libcypher-parser). If these are not available,
+[libcypher-parser](https://github.com/cleishm/libcypher-parser). If these are not available,
 just the library can be built (without neo4j-client), by invoking configure
 with `--disable-tools`.
 
@@ -280,8 +255,8 @@ additional tooling is required, including autoconf, automake and libtool.
 Assuming these are available, to checkout from GitHub and build:
 
 ```console
-$ git clone https://github.com/cleishm/libneo4j-client.git
-$ cd libneo4j-client
+$ git clone https://github.com/majensen/libneo4j-omni.git
+$ cd libneo4j-omni
 $ ./autogen.sh
 $ ./configure
 $ make clean check
@@ -289,7 +264,7 @@ $ sudo make install
 ```
 
 If you encounter warnings or errors during the build, please report them at
-https://github.com/cleishm/libneo4j-client/issues. If you wish to proceed
+https://github.com/majensen/libneo4j-omni/issues. If you wish to proceed
 dispite warnings, please invoke configure with the `--disable-werror`.
 
 NOTE: Recent versions of Mac OS X ship without the OpenSSL header files, and
@@ -311,33 +286,29 @@ More detail about this workaround can be found via `brew info openssl`.
 Support
 -------
 
-Having trouble with neo4j-client? Please raise any issues with usage on
-[StackOverflow](http://stackoverflow.com/questions/tagged/neo4j-client). If
-you've found a bug in the code, please raise an issue on
-[GitHub](https://github.com/cleishm/libneo4j-client) and include details of how
-to reproduce the bug.
+Please raise your issue on
+[GitHub](https://github.com/majensen/libneo4j-omni). Include details
+of how to reproduce the bug.
 
 
 Contributing
 ------------
 
-Contributions to neo4j-client are encouraged and should be made via pull
-requests made to the [GitHub repository](
-https://github.com/cleishm/libneo4j-client). Please include test cases where
-possible, and use a style and approach consistent with the rest of the library.
-
-It may be worthwhile raising an issue on github for the contribution you
-intend to make before developing the code, to allow for discussion and feedback
-on the requirements.
-
+See /CONTRIBUTING.md
 
 License
 -------
 
-neo4j-client is licensed under the [Apache License, Version 2.0](
+neo4j-client as libneo4j-client is licensed under the [Apache License, Version 2.0](
 http://www.apache.org/licenses/LICENSE-2.0).
 
 Unless required by applicable law or agreed to in writing, software distributed
 under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
 CONDITIONS OF ANY KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations under the License.
+
+Copyright
+---------
+
+libneo4j-omni is (c) 2016-2021 Chris Leishman, with additions (c) 2021-2023 Mark
+A. Jensen. Use git-blame to determine attribution.

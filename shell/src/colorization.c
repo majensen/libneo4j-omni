@@ -46,7 +46,7 @@ static struct help_colorization _no_help_colorization =
       .dsc = { "", "" } };
 
 static struct help_colorization _ansi_help_colorization =
-    { .cmd = { ANSI_COLOR_BRIGHT, ANSI_COLOR_RESET },
+    { .cmd = { ANSI_COLOR_BOLD, ANSI_COLOR_RESET },
       .arg = { ANSI_COLOR_GREEN, ANSI_COLOR_RESET },
       .dsc = { ANSI_COLOR_BLUE, ANSI_COLOR_RESET } };
 
