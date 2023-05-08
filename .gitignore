@@ -1,6 +1,7 @@
 .deps
 .doc
 .libs
+docs-stage/_*
 *~
 *.1
 *.o
@@ -13,6 +14,7 @@
 neo4j-client.pc
 Makefile
 Makefile.in
+!docs-stage/Makefile
 stamp-*
 TAGS
 **/doc/html
