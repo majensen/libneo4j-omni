@@ -31,3 +31,4 @@ breathe_default_project = 'libneo4j-client'
 cpp_index_common_prefix = ['neo4j_']
 html_theme = 'sphinx_rtd_theme'
 html_static_path = ['_static']
+html_js_files = ['https://code.jquery.com/jquery-3.6.4.min.js']
