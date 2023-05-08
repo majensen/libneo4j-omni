@@ -25,7 +25,8 @@ AM_MAINTAINER_MODE([enable])
 DECLARE_VERSIONS
 WITH_LIBS
 
-GCC_CFLAGS="-fvisibility=hidden -pipe -Wall -W -Wno-unused-parameter \
+GCC_CFLAGS="-fvisibility=hidden -pipe -DHAVE_BIO_METH_NEW \
+    -Wall -W -Wno-unused-parameter \     
     -Wno-missing-field-initializers -Wpointer-arith -Wstrict-prototypes \
     -Wcast-qual -Wcast-align -Wno-error=unused-function \
     -Wno-error=unused-variable -Wno-error=deprecated-declarations \
