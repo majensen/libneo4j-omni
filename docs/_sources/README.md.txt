@@ -1,5 +1,5 @@
-libneo4j-omni = libneo4j-client
-================================
+libneo4j-omni: libneo4j-client for all Neo4j versions
+=====================================================
 
 About
 -----
