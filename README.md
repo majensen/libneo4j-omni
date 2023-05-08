@@ -1,5 +1,5 @@
-libneo4j-omni - neo4j-client for all Neo4j versions
-============
+libneo4j-omni = libneo4j-client
+================================
 
 About
 -----
@@ -17,7 +17,9 @@ This version of neo4j-client is maintained by
 with the latest version of Bolt and the
 [Neo4j server](https://neo4j.com). At some time, these improvements
 may fold in to the orginal repo at
-https://github.com/cleishm/libneo4j-client.
+[https://github.com/cleishm/libneo4j-client](https://github.com/cleishm/libneo4j-client).
+
+The libneo4j-client API is [browseable here](https://majensen.github.io/libneo4j-omni/neo4j-client-doxy.html#).
 
 Features
 --------
@@ -43,7 +45,7 @@ Requirements
 ------------
 
 neo4j-client is known to work on GNU/Linux, Mac OS X and FreeBSD. It
-support Neo4j through version 5.
+supports Neo4j through version 5.
 
 
 Getting Started
@@ -184,8 +186,8 @@ description file, enabling you to obtain the required flags using
 `pkg-config --libs libneo4j-client`.
 
 
-Example
--------
+## Example
+
 
 ```C
 #include <neo4j-client.h>
@@ -231,6 +233,9 @@ int main(int argc, char *argv[])
 }
 ```
 
+## API
+
+See [the API documentation](https://majensen.github.io/libneo4j-omni/neo4j-client-doxy.html#) on [GitHub Pages](https://majensen.github.io/libneo4j-omni).
 
 Building
 --------

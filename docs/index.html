@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>&lt;no title&gt; &mdash; libneo4j-client 5.0.4 documentation</title>
+  <title>libneo4j-omni: libneo4j-client for all Neo4j versions &mdash; libneo4j-client 5.0.4 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -18,7 +18,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="libneo4j-omni - neo4j-client for all Neo4j versions" href="README.html" /> 
+    <link rel="next" title="libneo4j-omni = libneo4j-client" href="README.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -42,7 +42,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="README.html">libneo4j-omni - neo4j-client for all Neo4j versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README.html">libneo4j-omni = libneo4j-client</a></li>
 <li class="toctree-l1"><a class="reference internal" href="neo4j-client-doxy.html">neo4j-client API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api-index.html">API Index</a></li>
 </ul>
@@ -61,7 +61,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">&lt;no title&gt;</li>
+      <li class="breadcrumb-item active">libneo4j-omni: libneo4j-client for all Neo4j versions</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -73,12 +73,43 @@
              
   <div class="toctree-wrapper compound">
 </div>
+<section id="libneo4j-omni-libneo4j-client-for-all-neo4j-versions">
+<h1>libneo4j-omni: libneo4j-client for all Neo4j versions<a class="headerlink" href="#libneo4j-omni-libneo4j-client-for-all-neo4j-versions" title="Permalink to this heading"></a></h1>
+<p>libneo4j-omni is a fork of <a href="#id1"><span class="problematic" id="id2">`Chris
+Leishman's&lt;https://github.com/cleishm&gt;`_</span></a> brilliant
+<a href="#id3"><span class="problematic" id="id4">`libneo4j-client&lt;https://github.com/cleishm/libneo4j-client&gt;`_</span></a>, that
+supports the <a href="#id5"><span class="problematic" id="id6">`Neo4j&lt;https://neo4j.com&gt;`_</span></a> graph database servers
+through version 5.x.</p>
+<p>Both the <code class="docutils literal notranslate"><span class="pre">libneo4j-client</span></code> library and the <code class="docutils literal notranslate"><span class="pre">neo4j-client</span></code>
+command-line REPL may be built with this repo.</p>
+<section id="features">
+<h2>Features<a class="headerlink" href="#features" title="Permalink to this heading"></a></h2>
+<p>libneo4j-omni includes all features of libneo4j-client
+plus the following:</p>
+<ul class="simple">
+<li><p>Support for Neo4j versions 3, 4, and 5, including
+- Transactions (v3.x+)
+- Database selection (v4.x+)
+- Element IDs on graph entities (v5.x+)</p></li>
+<li><p>Most <a href="#id7"><span class="problematic" id="id8">`Structure-based data
+types&lt;https://neo4j.com/docs/bolt/current/bolt/structure-semantics/&gt;`_</span></a>
+returned by the Neo4j server along with Node, Relationship, and
+Path, including
+- Date, Time, LocalTime, DateTime, LocalDateTime
+- Duration
+- Point2D, Point3D</p></li>
+<li><p>Meaningful rendering of supported data types in the REPL client</p></li>
+<li><p>Allows the user to the version negotiation handshake with <code class="docutils literal notranslate"><span class="pre">--support</span></code>,
+e.g. <code class="docutils literal notranslate"><span class="pre">neo4j-client</span> <span class="pre">--support</span> <span class="pre">6.0,5.7-5.0</span> <span class="pre">&lt;host&gt;</span></code>.</p></li>
+</ul>
+</section>
+</section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="README.html" class="btn btn-neutral float-right" title="libneo4j-omni - neo4j-client for all Neo4j versions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="README.html" class="btn btn-neutral float-right" title="libneo4j-omni = libneo4j-client" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
