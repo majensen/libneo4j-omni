@@ -13,7 +13,7 @@ results to tables or CSV.
 neo4j-client utilizes the [Bolt Network Protocol](https://neo4j.com/docs/bolt/current/bolt/), and will work with any server that supports Bolt.
  
 This version of neo4j-client is maintained by
-(@majensen)[https://github.com/majensen], and attempts to stay current
+[@majensen](https://github.com/majensen), and attempts to stay current
 with the latest version of Bolt and the
 [Neo4j server](https://neo4j.com). At some time, these improvements
 may fold in to the orginal repo at
