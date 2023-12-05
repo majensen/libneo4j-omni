@@ -96,7 +96,7 @@ const char *libneo4j_client_version(void)
 }
 
 
-neo4j_config_t *neo4j_new_config()
+neo4j_config_t *neo4j_new_config(void)
 {
     neo4j_config_t *config = calloc(1, sizeof(neo4j_config_t));
     if (config == NULL)

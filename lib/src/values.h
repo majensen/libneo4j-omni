@@ -257,7 +257,7 @@ neo4j_value_t neo4j_date(const neo4j_value_t fields[1]);
  * @return The neo4j value encoding the time.
  */
 __neo4j_pure
-neo4j_value_t neo4j_time(const neo4j_value_t fields[1]);
+neo4j_value_t neo4j_time(const neo4j_value_t fields[2]);
 
 /**
  * Construct a neo4j value encoding a localtime.

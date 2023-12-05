@@ -1197,7 +1197,7 @@ long long neo4j_time_nsecs(neo4j_value_t value);
 long long neo4j_time_secs_offset(neo4j_value_t value);
 struct timespec *neo4j_time_timespec(neo4j_value_t value);
 
-neo4j_value_t neo4j_localtime(const neo4j_value_t fields[2]);
+neo4j_value_t neo4j_localtime(const neo4j_value_t fields[1]);
 long long neo4j_localtime_nsecs(neo4j_value_t value);
 struct timespec *neo4j_localtime_timespec(neo4j_value_t value);
 
@@ -1223,7 +1223,7 @@ long long neo4j_point2d_srid(neo4j_value_t value);
 double neo4j_point2d_x(neo4j_value_t value);
 double neo4j_point2d_y(neo4j_value_t value);
 
-neo4j_value_t neo4j_point3d(const neo4j_value_t fields[3]);
+neo4j_value_t neo4j_point3d(const neo4j_value_t fields[4]);
 long long neo4j_point3d_srid(neo4j_value_t value);
 double neo4j_point3d_x(neo4j_value_t value);
 double neo4j_point3d_y(neo4j_value_t value);
