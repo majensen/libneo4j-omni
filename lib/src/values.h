@@ -362,6 +362,17 @@ __neo4j_pure
 neo4j_value_t neo4j_elementid(const char *eid);
 
 /**
+ * Cast a neo4j string into a neo4j element ID.
+ *
+ * @internal
+ *
+ * @param [value] The neo4j string.
+ * @return The input value, modified to have the element ID type.
+ */
+__neo4j_pure
+neo4j_value_t neo4j_string_to_elementid(neo4j_value_t value);
+
+/**
  * Get the signature of a neo4j struct.
  *
  * Note that the result is undefined if the value is not of type NEO4J_STRUCT.
