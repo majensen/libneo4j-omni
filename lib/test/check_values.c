@@ -21,6 +21,7 @@
 #include <check.h>
 #include <errno.h>
 #include <unistd.h>
+#define _GNU_SOURCE
 #include <stdio.h>
 #include <time.h>
 
