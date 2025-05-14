@@ -64,7 +64,9 @@ static int ack_failure(neo4j_connection_t *connection  );
 static int ack_failure_callback(void *cdata, neo4j_message_type_t type,
        const neo4j_value_t *argv, uint16_t argc);
 
-static int hello(neo4j_connection_t *connection);
+#if __has_attribute(unused)
+static int hello(neo4j_connection_t *connection) __attribute__((unused));
+#endif
 static int goodbye(neo4j_connection_t *connection);
 
 static neo4j_map_entry_t xtra[2];
@@ -1283,10 +1285,12 @@ cleanup:
 
 // hello - alias for initialize (Bolt 3.0)
 
+#if __has_attribute(unused)
 int hello(neo4j_connection_t *connection)
 {
     return initialize(connection);
 }
+#endif
 
 // Note (Bolt 3.0)
 // The GOODBYE message does not generate a server response. It signals a graceful

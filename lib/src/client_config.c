@@ -722,7 +722,6 @@ int neo4j_config_set_supported_versions(neo4j_config_t *config, const char *vers
       if (parse_version_string(p, config->supported_versions+n) != 0)
 	{
 	  // set default
-	  int i;
 	  neo4j_config_set_supported_versions(config, neo4j_supported_versions_string);
 	  fprintf(stderr, "%s\n", neo4j_config_get_supported_versions(config));
 	  return -1;
