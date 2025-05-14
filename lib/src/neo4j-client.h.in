@@ -687,9 +687,9 @@ char *neo4j_tostring(neo4j_value_t value, char *strbuf, size_t n);
  * @param [strbuf] A buffer to write the string representation into.
  * @param [n] The length of the buffer.
  * @return The number of bytes that would have been written into the buffer
- *         had the buffer been large enough.
+ *         had the buffer been large enough, or -1 on error (errno will be set).
  */
-size_t neo4j_ntostring(neo4j_value_t value, char *strbuf, size_t n);
+ssize_t neo4j_ntostring(neo4j_value_t value, char *strbuf, size_t n);
 
 /**
  * Print a UTF-8 string representation of a neo4j value to a stream.

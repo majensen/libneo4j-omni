@@ -180,7 +180,7 @@ const char *neo4j_typestr(const neo4j_type_t type)
 
 struct neo4j_value_vt
 {
-    size_t (*str)(const neo4j_value_t *self, char *strbuf, size_t n);
+    ssize_t (*str)(const neo4j_value_t *self, char *strbuf, size_t n);
     ssize_t (*fprint)(const neo4j_value_t *self, FILE *stream);
     int (*serialize)(const neo4j_value_t *self, neo4j_iostream_t *stream);
     bool (*eq)(const neo4j_value_t *self, const neo4j_value_t *other);
@@ -396,7 +396,7 @@ char *neo4j_tostring(neo4j_value_t value, char *strbuf, size_t n)
 }
 
 
-size_t neo4j_ntostring(neo4j_value_t value, char *strbuf, size_t n)
+ssize_t neo4j_ntostring(neo4j_value_t value, char *strbuf, size_t n)
 {
     REQUIRE(value._vt_off < _MAX_VT_OFF, -1);
     REQUIRE(value._type < _MAX_TYPE, -1);
