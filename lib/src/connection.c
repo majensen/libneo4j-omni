@@ -1744,6 +1744,12 @@ int parse_version_string(char *version_string, version_spec_t *vs) {
     break;
   case 3:
     m1 = 0;
+#if defined(__STDC_VERSION__) && __STDC_VERSION__ >= 202311L
+    [[fallthrough]];
+#elif __has_attribute(fallthrough)
+    __attribute__((fallthrough));
+#endif
+    /* FALLTHROUGH */
   case 4:
     if (M0 != M1) {
       // Only minor version ranges within a single major version allowed
