@@ -828,14 +828,16 @@ unsigned int neo4j_string_length(neo4j_value_t value);
 /**
  * Return a pointer to a UTF-8 string.
  *
- * The pointer will be to a UTF-8 string, and will NOT be `NULL` terminated.
- * The length of the string, in bytes, can be obtained using
- * neo4j_ustring_length(value).
+ * The return value depends on the length of the string, which can be obtained,
+ * in bytes, using neo4j_string_length(). For strings with a non-zero length,
+ * the pointer will be to a UTF-8 string, and will NOT be `NULL` terminated.
+ * For empty strings, `NULL` is returned.
  *
  * Note that the result is undefined if the value is not of type NEO4J_STRING.
  *
  * @param [value] The neo4j string.
- * @return A pointer to a UTF-8 string, which will not be terminated.
+ * @return A pointer to a UTF-8 string, which will not be terminated,
+ *         or `NULL` if the value is not a non-empty string.
  */
 __neo4j_const
 const char *neo4j_ustring_value(neo4j_value_t value);
