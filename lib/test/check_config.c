@@ -33,7 +33,7 @@ START_TEST (test_neo4j_config_set_supported_versions)
   neo4j_config_t *config = neo4j_new_config();
   ck_assert(config->supported_versions != NULL);
   ck_assert_str_eq
-    (neo4j_config_get_supported_versions(config),"5.6-5.2 4.0 4.4-4.1 3.0 ");
+    (neo4j_config_get_supported_versions(config), "5.0 4.0 3.0 1.0 "); // default
   ck_assert_int_eq
     (neo4j_config_set_supported_versions(config, "5.4"),0);
   ck_assert_int_eq
@@ -73,7 +73,7 @@ START_TEST (test_neo4j_config_set_supported_versions)
   ck_assert_int_eq
     (neo4j_config_set_supported_versions(config, "5.4,4.3-4,3,crap"),-1);
   ck_assert_str_eq
-    (neo4j_config_get_supported_versions(config), "5.6-5.2 4.0 4.4-4.1 3.0 ");
+    (neo4j_config_get_supported_versions(config), "5.0 4.0 3.0 1.0 "); // default
   
 
   
