@@ -1077,25 +1077,25 @@ END_TEST
 START_TEST (date_value)
 {
     neo4j_value_t field_values[] = { neo4j_int(18250) };
-    // Thu Dec 19 2019
+    // Fri Dec 20 2019
     neo4j_value_t value = neo4j_date(field_values);
     ck_assert(neo4j_type(value) == NEO4J_DATE);
 
     char *str = neo4j_tostring(value, buf, sizeof(buf));
     ck_assert(str == buf);
-    ck_assert_str_eq(str, "2019-12-19 (1576800000)");
+    ck_assert_str_eq(str, "2019-12-20 (1576800000)");
 
     ck_assert_int_eq(neo4j_ntostring(value, NULL, 0), 23);
     ck_assert_int_eq(neo4j_ntostring(value, buf, sizeof(buf)), 23);
-    ck_assert_str_eq(buf, "2019-12-19 (1576800000)");
+    ck_assert_str_eq(buf, "2019-12-20 (1576800000)");
     ck_assert_int_eq(neo4j_ntostring(value, buf, 23), 23);
-    ck_assert_str_eq(buf, "2019-12-19 (1576800000");
+    ck_assert_str_eq(buf, "2019-12-20 (1576800000");
     ck_assert_int_eq(neo4j_ntostring(value, buf, 22), 23);
-    ck_assert_str_eq(buf, "2019-12-19 (157680000");
+    ck_assert_str_eq(buf, "2019-12-20 (157680000");
 
     ck_assert_int_eq(neo4j_fprint(value, memstream), 23);
     fflush(memstream);
-    ck_assert_str_eq(memstream_buffer, "2019-12-19 (1576800000)");
+    ck_assert_str_eq(memstream_buffer, "2019-12-20 (1576800000)");
 }
 END_TEST
 
