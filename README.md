@@ -272,8 +272,8 @@ $ sudo make install
 ```
 
 If you encounter warnings or errors during the build, please report them at
-https://github.com/majensen/libneo4j-omni/issues. If you wish to proceed
-dispite warnings, please invoke configure with the `--disable-werror`.
+<https://github.com/majensen/libneo4j-omni/issues>. If you wish to proceed
+despite warnings, please invoke configure with the `--disable-werror`.
 
 NOTE: Recent versions of Mac OS X ship without the OpenSSL header files, and
 autoconf doesn't pick this up (yet). If you used the homebrew install method,
@@ -302,7 +302,7 @@ of how to reproduce the bug.
 Contributing
 ------------
 
-See /CONTRIBUTING.md
+See [/CONTRIBUTING.md](https://github.com/majensen/libneo4j-omni/blob/main/CONTRIBUTING.md)
 
 License
 -------
