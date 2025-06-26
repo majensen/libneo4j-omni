@@ -336,7 +336,7 @@ ssize_t neo4j_bytes_str(const neo4j_value_t *value, char *buf, size_t n)
 
     for (unsigned int i = 0; i < v->length; ++i)
     {
-        int r = snprintf(buf + l, (l < n)? n-l : 0, "%02x", v->bytes[i]);
+        int r = snprintf(buf + l, (l < n)? n-l : 0, "%02hhx", v->bytes[i]);
         if (r < 0)
         {
             return -1;
@@ -366,7 +366,7 @@ ssize_t neo4j_bytes_fprint(const neo4j_value_t *value, FILE *stream)
     ssize_t l = 1;
     for (unsigned int i = 0; i < v->length; ++i)
     {
-        int r = fprintf(stream, "%02x", v->bytes[i]);
+        int r = fprintf(stream, "%02hhx", v->bytes[i]);
         if (r < 0)
         {
             return -1;
