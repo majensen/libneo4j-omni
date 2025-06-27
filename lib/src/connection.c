@@ -319,8 +319,8 @@ neo4j_connection_t *establish_connection(const char *hostname,
 
     neo4j_log_info(logger, "connected (%p) to %s:%u%s", (void *)connection,
             hostname, port, connection->insecure? " (insecure)" : "");
-    neo4j_log_debug(logger, "connection %p using protocol version %d",
-            (void *)connection, protocol_version);
+    neo4j_log_debug(logger, "connection %p using protocol version %d.%d",
+            (void *)connection, protocol_version, protocol_minor_version);
     neo4j_atomic_bool_set(&(connection->poison_tx),false);
     return connection;
 
