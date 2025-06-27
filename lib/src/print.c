@@ -1126,7 +1126,7 @@ ssize_t neo4j_time_str(const neo4j_value_t *value, char *buf, size_t n)
 	snprintf(frac, 15, "%.9f", 1.0e-09*(double) ntsp->tv_nsec);
 	l += snprintf(buf? buf+l : buf, (l<n)? n-l : 0, "%s", frac+1);
     }
-    l += snprintf(buf? buf+l : buf, (l<n)? n-l : 0, "%+03ld00", offset/3600);
+    l += snprintf(buf? buf+l : buf, (l<n)? n-l : 0, "%+03ld%02ld", offset/3600, (labs(offset) % 3600) / 60);
     l += snprintf(buf? buf+l : buf, (l<n)? n-l : 0, " (");
     l += snprintf(buf? buf+l : buf, (l<n)? n-l : 0, "%ld", ntsp->tv_sec);
     l += snprintf(buf? buf+l : buf, (l<n)? n-l : 0, ")");
@@ -1211,7 +1211,7 @@ ssize_t neo4j_datetime_str(const neo4j_value_t *value, char *buf, size_t n)
 	snprintf(frac, 15, "%.9f", 1.0e-09*(double) ntsp->tv_nsec);
 	l += snprintf(buf? buf+l : buf, (l<n)? n-l : 0, "%s", frac+1);
     }
-    l += snprintf(buf? buf+l : buf, (l<n)? n-l : 0, "%+03ld00", offset/3600);
+    l += snprintf(buf? buf+l : buf, (l<n)? n-l : 0, "%+03ld%02ld", offset/3600, (labs(offset) % 3600) / 60);
     l += snprintf(buf? buf+l : buf, (l<n)? n-l : 0, " (");
     l += snprintf(buf? buf+l : buf, (l<n)? n-l : 0, "%ld", ntsp->tv_sec-offset);
     l += snprintf(buf? buf+l : buf, (l<n)? n-l : 0, ")");
