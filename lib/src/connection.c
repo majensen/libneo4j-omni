@@ -457,8 +457,8 @@ int negotiate_protocol_version(neo4j_iostream_t *iostream,
         return -1;
     }
     agreed_version = ntohl(agreed_version);
-    *protocol_version = agreed_version & 0007;
-    *protocol_minor_version = (agreed_version & 0700) >> 8;
+    *protocol_version = agreed_version & 0x0007;
+    *protocol_minor_version = (agreed_version & 0x0700) >> 8;
     return 0;
 }
 
