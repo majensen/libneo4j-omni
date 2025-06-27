@@ -1232,6 +1232,19 @@ int initialize(neo4j_connection_t *connection)
       req->argv = req->_argv;
       req->argc = 2;
       }
+    else if (connection->version == 4 && connection->minor_version == 4)
+      {
+        neo4j_value_t patch_bolt[1] = {neo4j_string("utc")};
+        neo4j_map_entry_t auth_token[5] =
+          { neo4j_map_entry("user_agent", neo4j_string(config->client_id)),
+            neo4j_map_entry("scheme", neo4j_string("basic")),
+            neo4j_map_entry("principal", neo4j_string(config->username)),
+            neo4j_map_entry("credentials", neo4j_string(config->password)),
+            neo4j_map_entry("patch_bolt", neo4j_list(patch_bolt, 1)) };
+        req->_argv[0] = neo4j_map(auth_token, 5);
+        req->argv = req->_argv;
+        req->argc = 1;
+      }
     else
       {
         neo4j_map_entry_t auth_token[4] =
