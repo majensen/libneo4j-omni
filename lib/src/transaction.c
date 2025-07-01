@@ -535,6 +535,7 @@ void neo4j_free_tx(neo4j_transaction_t *tx)
   if (tx->num_bookmarks > 0) {
     neo4j_free(tx->allocator, (void *)tx->bookmarks);
   }
+  neo4j_mpool_drain(&tx->mpool);
   neo4j_logger_release(tx->logger);
   // free tx space
   neo4j_free(tx->allocator, tx);
