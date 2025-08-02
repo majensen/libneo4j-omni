@@ -724,6 +724,7 @@ int neo4j_config_set_supported_versions(neo4j_config_t *config, const char *vers
 	  // set default
 	  neo4j_config_set_supported_versions(config, neo4j_supported_versions_string);
 	  fprintf(stderr, "%s\n", neo4j_config_get_supported_versions(config));
+      free(vs);
 	  return -1;
 	}
       p = strtok(NULL, ",");
@@ -735,6 +736,7 @@ int neo4j_config_set_supported_versions(neo4j_config_t *config, const char *vers
     (config->supported_versions+n)->and_lower = 0;
     n++;
   }
+  free(vs);
   return 0;
 }
 

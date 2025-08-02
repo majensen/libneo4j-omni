@@ -295,6 +295,14 @@ struct neo4j_logger_provider
  *
  * If no flags are required, pass 0 or `NEO4J_STD_LOGGER_DEFAULT`.
  *
+ * @warning **Thread-Safety Warning:** The logger provider instance returned by
+ * this function is **NOT thread-safe**.
+ *
+ * It is unsafe to share a single `neo4j_config_t` object containing this
+ * provider across multiple threads if those threads will be creating
+ * connections (`neo4j_connect` or `neo4j_tcp_connect`) concurrently. Doing so may
+ * lead to race conditions, memory corruption or memory leak.
+ *
  * @param [stream] The stream to output to.
  * @param [level] The default level to log at.
  * @param [flags] A bitmask of flags for the standard logger output.
