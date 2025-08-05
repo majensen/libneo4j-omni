@@ -76,10 +76,10 @@ const struct neo4j_plan_table_colors *neo4j_plan_table_ansi_colors =
         &_neo4j_plan_table_ansi_colors;
 
 static version_spec_t neo4j_supported_versions[4] = {
-  {5, 0, 0}, {4, 0, 0}, {3, 0, 0}, {1, 0, 0}
+  {5, 0, 0}, {4, 4, 0}, {3, 0, 0}, {1, 0, 0}
 };
 
-static const char neo4j_supported_versions_string[] = "5.0,4.0,3.0,1.0";
+static const char neo4j_supported_versions_string[] = "5.0,4.4,3.0,1.0";
 
 static ssize_t default_password_callback(void *userdata, char *buf, size_t n);
 
