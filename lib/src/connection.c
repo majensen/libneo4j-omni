@@ -319,8 +319,8 @@ neo4j_connection_t *establish_connection(const char *hostname,
 
     neo4j_log_info(logger, "connected (%p) to %s:%u%s", (void *)connection,
             hostname, port, connection->insecure? " (insecure)" : "");
-    neo4j_log_debug(logger, "connection %p using protocol version %d",
-            (void *)connection, protocol_version);
+    neo4j_log_debug(logger, "connection %p using protocol version %d.%d",
+            (void *)connection, protocol_version, protocol_minor_version);
     neo4j_atomic_bool_set(&(connection->poison_tx),false);
     return connection;
 
@@ -457,8 +457,8 @@ int negotiate_protocol_version(neo4j_iostream_t *iostream,
         return -1;
     }
     agreed_version = ntohl(agreed_version);
-    *protocol_version = agreed_version & 0007;
-    *protocol_minor_version = (agreed_version & 0700) >> 8;
+    *protocol_version = agreed_version & 0x0007;
+    *protocol_minor_version = (agreed_version & 0x0700) >> 8;
     return 0;
 }
 
@@ -1231,6 +1231,19 @@ int initialize(neo4j_connection_t *connection)
       req->_argv[1] = neo4j_map(auth_token, 3);
       req->argv = req->_argv;
       req->argc = 2;
+      }
+    else if (connection->version == 4 && connection->minor_version == 4)
+      {
+        neo4j_value_t patch_bolt[1] = {neo4j_string("utc")};
+        neo4j_map_entry_t auth_token[5] =
+          { neo4j_map_entry("user_agent", neo4j_string(config->client_id)),
+            neo4j_map_entry("scheme", neo4j_string("basic")),
+            neo4j_map_entry("principal", neo4j_string(config->username)),
+            neo4j_map_entry("credentials", neo4j_string(config->password)),
+            neo4j_map_entry("patch_bolt", neo4j_list(patch_bolt, 1)) };
+        req->_argv[0] = neo4j_map(auth_token, 5);
+        req->argv = req->_argv;
+        req->argc = 1;
       }
     else
       {

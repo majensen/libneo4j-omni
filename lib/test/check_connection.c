@@ -30,7 +30,7 @@ struct received_response
 
 
 #define EXPECTED_VERSIONS_DEFAULT \
-    { htonl(0x000005), htonl(0x000004), htonl(0x000003), htonl(0x000001) }
+    { htonl(0x000005), htonl(0x000404), htonl(0x000003), htonl(0x000001) }
 
 #define STUB_FAILURE_CODE -99
 
