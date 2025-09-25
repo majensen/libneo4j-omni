@@ -801,9 +801,9 @@ neo4j_value_t neo4j_node(const neo4j_value_t fields[4])
 {
     if (neo4j_type(fields[0]) != NEO4J_IDENTITY ||
             neo4j_type(fields[1]) != NEO4J_LIST ||
-            neo4j_type(fields[2]) != NEO4J_MAP 
-//	    || neo4j_type(fields[3]) != NEO4J_ELEMENTID
-	)
+            neo4j_type(fields[2]) != NEO4J_MAP ||
+            neo4j_type(fields[3]) != NEO4J_ELEMENTID
+        )
     {
         errno = EINVAL;
         return neo4j_null;
@@ -875,11 +875,11 @@ neo4j_value_t neo4j_relationship(const neo4j_value_t fields[8])
             (neo4j_type(fields[2]) != NEO4J_IDENTITY &&
                 !neo4j_is_null(fields[1])) ||
             neo4j_type(fields[3]) != NEO4J_STRING ||
-            neo4j_type(fields[4]) != NEO4J_MAP
-//	    || neo4j_type(fields[5]) != NEO4J_ELEMENTID ||
-//	    neo4j_type(fields[6]) != NEO4J_ELEMENTID ||
-//	    neo4j_type(fields[7]) != NEO4J_ELEMENTID
-	)
+            neo4j_type(fields[4]) != NEO4J_MAP ||
+            neo4j_type(fields[5]) != NEO4J_ELEMENTID ||
+            neo4j_type(fields[6]) != NEO4J_ELEMENTID ||
+            neo4j_type(fields[7]) != NEO4J_ELEMENTID
+        )
     {
         errno = EINVAL;
         return neo4j_null;
@@ -897,9 +897,9 @@ neo4j_value_t neo4j_unbound_relationship(const neo4j_value_t fields[4])
 {
     if (neo4j_type(fields[0]) != NEO4J_IDENTITY ||
             neo4j_type(fields[1]) != NEO4J_STRING ||
-            neo4j_type(fields[2]) != NEO4J_MAP
-//   	    // neo4j_type(fields[3]) != NEO4J_ELEMENTID
-	)
+            neo4j_type(fields[2]) != NEO4J_MAP ||
+            neo4j_type(fields[3]) != NEO4J_ELEMENTID
+        )
     {
         errno = EINVAL;
         return neo4j_null;
