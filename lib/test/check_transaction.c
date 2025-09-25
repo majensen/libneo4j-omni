@@ -53,8 +53,8 @@ static neo4j_iostream_t *client_ios;
 static neo4j_iostream_t *server_ios;
 static struct neo4j_connection_factory stub_factory;
 static neo4j_config_t *config;
-neo4j_mpool_t mpool;
-neo4j_connection_t *connection;
+static neo4j_mpool_t mpool;
+static neo4j_connection_t *connection;
 
 
 static void setup(void)
