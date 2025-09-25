@@ -1993,7 +1993,7 @@ neo4j_transaction_t *neo4j_begin_tx(neo4j_connection_t *connection,
  * @attention This function is available when server protocol is Bolt 3 or higher.
  *
  * @param [transaction] The transaction (obtained from `neo4j_begin_tx`)
- * @return int: 0 on success, 1 on failure.
+ * @return int: 0 on success, non-zero on failure.
  *
  */
 __neo4j_must_check
@@ -2004,7 +2004,7 @@ int neo4j_commit(neo4j_transaction_t *tx);
  * @attention This function is available when server protocol is Bolt 3 or higher.
  *
  * @param [transaction] The transaction (obtained from `neo4j_begin_tx`)
- * @return int: 0 on success, 1 on failure.
+ * @return int: 0 on success, non-zero on failure.
  *
  */
 __neo4j_must_check
@@ -2066,7 +2066,7 @@ bool neo4j_tx_defunct(neo4j_transaction_t *tx);
  * and neo4j_tx_failure_message().
  *
  * @param [tx] The transaction.
- * @return 1 if transaction has failed; 0 if not.
+ * @return A non-zero value (errno) if the transaction has failed; 0 if not.
  */
 __neo4j_must_check
 int neo4j_tx_failure(neo4j_transaction_t *tx);
