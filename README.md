@@ -298,6 +298,9 @@ Please raise your issue on
 [GitHub](https://github.com/majensen/libneo4j-omni). Include details
 of how to reproduce the bug.
 
+The [libneo4j-client FAQ](https://github.com/cleishm/libneo4j-client/wiki/FAQ)
+should be applicable to libneo4j-omni, too.
+
 
 Contributing
 ------------
