@@ -1101,12 +1101,13 @@ ssize_t neo4j_date_str(const neo4j_value_t *value, char *buf, size_t n)
 }
 
 ssize_t neo4j_date_fprint(const neo4j_value_t *value, FILE *stream) {
+    REQUIRE(value != NULL, -1);
     assert(neo4j_type(*value) == NEO4J_DATE);
     char buf[BUFLEN];
     if (neo4j_date_str(value, buf, BUFLEN-1) < 0) {
 	return -1;
     }
-    return fputs( (const char *)buf, stream );
+    return fprintf( stream, "%s", (const char *)buf );
 }
 
 /* time : prints time of day and UTC offset string, with time_t value in parens;
@@ -1152,12 +1153,13 @@ ssize_t neo4j_time_str(const neo4j_value_t *value, char *buf, size_t n)
 }
 
 ssize_t neo4j_time_fprint(const neo4j_value_t *value, FILE *stream) {
+    REQUIRE(value != NULL, -1);
     assert(neo4j_type(*value) == NEO4J_TIME);
     char buf[BUFLEN];
     if (neo4j_time_str(value, buf, BUFLEN-1) < 0) {
 	return -1;
     }
-    return fputs( (const char *)buf, stream );
+    return fprintf( stream, "%s", (const char *)buf );
 }
 
 /* localtime */
@@ -1200,12 +1202,13 @@ ssize_t neo4j_localtime_str(const neo4j_value_t *value, char *buf, size_t n)
 }
 
 ssize_t neo4j_localtime_fprint(const neo4j_value_t *value, FILE *stream) {
+    REQUIRE(value != NULL, -1);
     assert(neo4j_type(*value) == NEO4J_LOCALTIME);
     char buf[BUFLEN];
     if (neo4j_localtime_str(value, buf, BUFLEN-1) < 0) {
 	return -1;
     }
-    return fputs( (const char *)buf, stream );
+    return fprintf( stream, "%s", (const char *)buf );
 }
 
 /* datetime */
@@ -1251,12 +1254,13 @@ ssize_t neo4j_datetime_str(const neo4j_value_t *value, char *buf, size_t n)
 }
 
 ssize_t neo4j_datetime_fprint(const neo4j_value_t *value, FILE *stream) {
+    REQUIRE(value != NULL, -1);
     assert(neo4j_type(*value) == NEO4J_DATETIME);
     char buf[BUFLEN];
     if (neo4j_datetime_str(value, buf, BUFLEN-1) < 0) {
 	return -1;
     }
-    return fputs( (const char *)buf, stream );
+    return fprintf( stream, "%s", (const char *)buf );
 }
 
 /* localdatetime */
@@ -1299,12 +1303,13 @@ ssize_t neo4j_localdatetime_str(const neo4j_value_t *value, char *buf, size_t n)
 }
 
 ssize_t neo4j_localdatetime_fprint(const neo4j_value_t *value, FILE *stream) {
+    REQUIRE(value != NULL, -1);
     assert(neo4j_type(*value) == NEO4J_LOCALDATETIME);
     char buf[BUFLEN];
     if (neo4j_localdatetime_str(value, buf, BUFLEN-1) < 0) {
 	return -1;
     }
-    return fputs( (const char *)buf, stream );
+    return fprintf( stream, "%s", (const char *)buf );
 }
 
 /* duration */
@@ -1392,12 +1397,13 @@ ssize_t neo4j_duration_str(const neo4j_value_t *value, char *buf, size_t n)
 }
 
 ssize_t neo4j_duration_fprint(const neo4j_value_t *value, FILE *stream) {
+    REQUIRE(value != NULL, -1);
     assert(neo4j_type(*value) == NEO4J_DURATION);
     char buf[BUFLEN];
     if (neo4j_duration_str(value, buf, BUFLEN-1) < 0) {
 	return -1;
     }
-    return fputs( (const char *)buf, stream );
+    return fprintf( stream, "%s", (const char *)buf );
 }
 
 /* point2d */
@@ -1432,12 +1438,13 @@ ssize_t neo4j_point2d_str(const neo4j_value_t *value, char *buf, size_t n)
 
 
 ssize_t neo4j_point2d_fprint(const neo4j_value_t *value, FILE *stream) {
+    REQUIRE(value != NULL, -1);
     assert(neo4j_type(*value) == NEO4J_POINT2D);
     char buf[BUFLEN];
     if (neo4j_point2d_str(value, buf, BUFLEN-1) < 0) {
 	return -1;
     }
-    return fputs( (const char *)buf, stream );
+    return fprintf( stream, "%s", (const char *)buf );
 }
 
 /* point3d */
@@ -1472,10 +1479,11 @@ ssize_t neo4j_point3d_str(const neo4j_value_t *value, char *buf, size_t n)
 }
 
 ssize_t neo4j_point3d_fprint(const neo4j_value_t *value, FILE *stream) {
+    REQUIRE(value != NULL, -1);
     assert(neo4j_type(*value) == NEO4J_POINT3D);
     char buf[BUFLEN];
     if (neo4j_point3d_str(value, buf, BUFLEN-1) < 0) {
 	return -1;
     }
-    return fputs( (const char *)buf, stream );
+    return fprintf( stream, "%s", (const char *)buf );
 }
