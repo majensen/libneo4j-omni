@@ -692,7 +692,8 @@ char *neo4j_tostring(neo4j_value_t value, char *strbuf, size_t n);
  * ensuring it is always `NULL` terminated.
  *
  * @param [value] The neo4j value.
- * @param [strbuf] A buffer to write the string representation into.
+ * @param [strbuf] A buffer to write the string representation into, or
+           `NULL` if no string representation should be written.
  * @param [n] The length of the buffer.
  * @return The number of bytes that would have been written into the buffer
  *         had the buffer been large enough, or -1 on error (errno will be set).

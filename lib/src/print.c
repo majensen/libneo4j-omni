@@ -1080,7 +1080,14 @@ ssize_t neo4j_date_str(const neo4j_value_t *value, char *buf, size_t n)
     if (localtime_r(&ntmt, &bdt) == NULL) {
 	return -1;
     }
-    size_t l = strftime(buf, n, "%Y-%m-%d", &bdt);
+    size_t l;
+    if (buf != NULL) {
+        l = strftime(buf, n, "%Y-%m-%d", &bdt);
+    }
+    else {
+        char buf1[1];
+        l = strftime(buf1, sizeof(buf1), "%Y-%m-%d", &bdt);
+    }
     if (l==0) {
 	l = 10;
     }
@@ -1118,7 +1125,14 @@ ssize_t neo4j_time_str(const neo4j_value_t *value, char *buf, size_t n)
 	free(ntsp);
 	return -1;
     }
-    size_t l = strftime(buf, n, "%T", &bdt);
+    size_t l;
+    if (buf != NULL) {
+        l = strftime(buf, n, "%T", &bdt);
+    }
+    else {
+        char buf1[1];
+        l = strftime(buf1, sizeof(buf1), "%T", &bdt);
+    }
     if (l==0) {
 	l = 8;
     }
@@ -1160,7 +1174,14 @@ ssize_t neo4j_localtime_str(const neo4j_value_t *value, char *buf, size_t n)
 	free(ntsp);
 	return -1;
     }
-    size_t l = strftime(buf, n, "%T", &bdt);
+    size_t l;
+    if (buf != NULL) {
+        l = strftime(buf, n, "%T", &bdt);
+    }
+    else {
+        char buf1[1];
+        l = strftime(buf1, sizeof(buf1), "%T", &bdt);
+    }
     if (l<=0) {
 	l = 8;
     }
@@ -1203,7 +1224,14 @@ ssize_t neo4j_datetime_str(const neo4j_value_t *value, char *buf, size_t n)
 	free(ntsp);
 	return -1;
     }
-    size_t l = strftime(buf, n, "%FT%T", &bdt);
+    size_t l;
+    if (buf != NULL) {
+        l = strftime(buf, n, "%FT%T", &bdt);
+    }
+    else {
+        char buf1[1];
+        l = strftime(buf1, sizeof(buf1), "%FT%T", &bdt);
+    }
     if (l<=0) {
 	l = 19;
     }
@@ -1245,7 +1273,14 @@ ssize_t neo4j_localdatetime_str(const neo4j_value_t *value, char *buf, size_t n)
 	free(ntsp);
 	return -1;
     }
-    size_t l = strftime(buf, n, "%FT%T", &bdt);
+    size_t l;
+    if (buf != NULL) {
+        l = strftime(buf, n, "%FT%T", &bdt);
+    }
+    else {
+        char buf1[1];
+        l = strftime(buf1, sizeof(buf1), "%FT%T", &bdt);
+    }
     if (l<=0) {
 	l = 19;
     }
