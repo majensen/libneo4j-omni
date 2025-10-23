@@ -183,7 +183,7 @@ compile time, typically using the linking flags
 `-lneo4j-client -lssl -lcrypto -lm`.  Alternatively, libneo4j-client ships with
 a [pkg-config]( https://wiki.freedesktop.org/www/Software/pkg-config/)
 description file, enabling you to obtain the required flags using
-`pkg-config --libs libneo4j-client`.
+`pkg-config --libs neo4j-client`.
 
 
 ## Example
