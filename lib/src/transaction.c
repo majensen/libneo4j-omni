@@ -531,6 +531,9 @@ const char *neo4j_tx_commit_bookmark(neo4j_transaction_t *tx)
 
 void neo4j_free_tx(neo4j_transaction_t *tx)
 {
+  if (tx == NULL) {
+    return;
+  }
   // free bookmarks array space
   if (tx->num_bookmarks > 0) {
     neo4j_free(tx->allocator, (void *)tx->bookmarks);

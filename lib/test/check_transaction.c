@@ -345,6 +345,7 @@ START_TEST (test_transaction)
     ck_assert(!neo4j_tx_is_open(tx));
     neo4j_free_tx(tx);
     assert(rb_is_empty(in_rb));
+    neo4j_free_tx(0);
 }
 END_TEST
 

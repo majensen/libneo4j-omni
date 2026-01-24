@@ -2132,7 +2132,7 @@ const char *neo4j_tx_commit_bookmark(neo4j_transaction_t *tx);
  * Use to clean up after transaction has failed, been committed, or
  * been rolled back.
  *
- * @param [tx] The transaction.
+ * @param [tx] The transaction. If NULL, this function becomes a no-op.
  * @return none
  */
 void neo4j_free_tx(neo4j_transaction_t *tx);
