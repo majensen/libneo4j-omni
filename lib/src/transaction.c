@@ -319,7 +319,7 @@ neo4j_result_stream_t *tx_run(neo4j_transaction_t *tx,
       tx->failure = errno;
       return NULL;
     }
-  if (neo4j_check_failure(tx->results))
+  if (neo4j_check_failure(tx->results) == NEO4J_STATEMENT_EVALUATION_FAILED)
     {
       if (strcmp(neo4j_error_code(tx->results),
                  "Neo.ClientError.Transaction.TransactionTimedOut") == 0) {
