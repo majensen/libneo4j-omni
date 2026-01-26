@@ -33,6 +33,7 @@
 #include "util.h"
 #include <assert.h>
 #include <unistd.h>
+#include "thread_local.h"
 
 #ifndef __has_attribute
 #  define __has_attribute(x) 0  /* for GCC 4.8 and earlier */
@@ -73,7 +74,7 @@ static int hello(neo4j_connection_t *connection) __attribute__((unused));
 #endif
 static int goodbye(neo4j_connection_t *connection);
 
-static neo4j_map_entry_t xtra[2];
+static THREAD_LOCAL neo4j_map_entry_t xtra[2];
 
 struct neo4j_connection_factory neo4j_std_connection_factory =
 {
