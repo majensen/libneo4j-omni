@@ -24,11 +24,12 @@
 #include "values.h"
 #include <assert.h>
 #include <stddef.h>
+#include <threads.h>
 
 #define NUM_XTRA_MAP_ENTS 6
 // making global to avoid disrupting the neo4j_run() signature
-static neo4j_value_t g_extra_map;
-static neo4j_map_entry_t g_extra_ents[NUM_XTRA_MAP_ENTS];
+thread_local static neo4j_value_t g_extra_map;
+thread_local static neo4j_map_entry_t g_extra_ents[NUM_XTRA_MAP_ENTS];
 
 int neo4j_check_failure(neo4j_result_stream_t *results)
 {

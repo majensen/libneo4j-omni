@@ -24,6 +24,7 @@
 #include "memory.h"
 #include "metadata.h"
 #include "network.h"
+#include <threads.h>
 #ifdef HAVE_OPENSSL
 #include "openssl_iostream.h"
 #endif
@@ -73,7 +74,7 @@ static int hello(neo4j_connection_t *connection) __attribute__((unused));
 #endif
 static int goodbye(neo4j_connection_t *connection);
 
-static neo4j_map_entry_t xtra[2];
+thread_local static neo4j_map_entry_t xtra[2];
 
 struct neo4j_connection_factory neo4j_std_connection_factory =
 {
