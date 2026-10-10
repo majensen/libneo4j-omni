@@ -19,6 +19,11 @@ with the latest version of Bolt and the
 may fold in to the orginal repo at
 [https://github.com/cleishm/libneo4j-client](https://github.com/cleishm/libneo4j-client).
 
+> [!IMPORTANT]
+>
+> **Maintenance is currently limited and there is no security support.**
+> See [CONTRIBUTING.md](CONTRIBUTING.md).
+
 The libneo4j-client API is [browseable here](https://majensen.github.io/libneo4j-omni/neo4j-client-doxy.html#).
 
 Features
@@ -305,7 +310,7 @@ should be applicable to libneo4j-omni, too.
 Contributing
 ------------
 
-See [/CONTRIBUTING.md](https://github.com/majensen/libneo4j-omni/blob/main/CONTRIBUTING.md)
+See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 License
 -------
