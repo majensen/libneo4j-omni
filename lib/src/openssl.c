@@ -563,12 +563,12 @@ int check_common_name(X509 *cert, const char *hostname, neo4j_logger_t *logger)
     {
         return -1;
     }
-    X509_NAME_ENTRY *cn = X509_NAME_get_entry(X509_get_subject_name(cert), i);
+    const X509_NAME_ENTRY *cn = X509_NAME_get_entry(X509_get_subject_name(cert), i);
     if (cn == NULL)
     {
         return -1;
     }
-    ASN1_STRING *asn1 = X509_NAME_ENTRY_get_data(cn);
+    const ASN1_STRING *asn1 = X509_NAME_ENTRY_get_data(cn);
     if (asn1 == NULL)
     {
         return -1;
