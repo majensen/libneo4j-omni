@@ -65,7 +65,7 @@ END_TEST
 
 START_TEST (test_u8clen_lonely_start)
 {
-    char s[2] = "  ";
+    char s[] = "  ";
     for (unsigned char c = 0xC0; c <= 0xDF; ++c)
     {
         s[0] = c;
