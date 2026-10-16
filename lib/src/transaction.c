@@ -26,6 +26,7 @@
 #include <assert.h>
 #include <string.h>
 #include <stddef.h>
+#include <threads.h>
 #include <unistd.h>
 #include <stdio.h>
 
@@ -503,7 +504,7 @@ const char *neo4j_tx_failure_code(neo4j_transaction_t *tx)
   if (neo4j_is_null(tx->failure_code)) {
     return "";
   }
-  char buf[128];
+  static thread_local char buf[128];
   return neo4j_string_value(tx->failure_code, buf, 128);
 }
 
