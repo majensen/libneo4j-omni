@@ -1101,7 +1101,7 @@ int drain_queued_requests(neo4j_connection_t *connection)
         neo4j_log_trace(connection->logger, "draining %s (%p) from queue on %p",
                 neo4j_message_type_str(request->type),
                 (void *)request, (void *)connection);
-        int result = request->receive(request->cdata, NULL, NULL, 0);
+        int result = request->receive(request->cdata, NEO4J_IGNORED_MESSAGE, NULL, 0);
         assert(result <= 0);
         if (err == 0 && result < 0)
         {

@@ -84,6 +84,7 @@ neo4j_transaction_t *neo4j_begin_tx(neo4j_connection_t *connection,
 int begin_callback(void *cdata, neo4j_message_type_t type, const neo4j_value_t *argv, uint16_t argc)
 {
   assert(cdata != NULL);
+  assert(type != NULL);
   assert(argc == 0 || argv != NULL);
   neo4j_transaction_t *tx = (neo4j_transaction_t *) cdata;
 
@@ -113,9 +114,6 @@ int begin_callback(void *cdata, neo4j_message_type_t type, const neo4j_value_t *
       neo4j_log_trace(tx->logger, "tx begin ignored");
       return 0;
     }
-  char description[128];
-  snprintf(description, sizeof(description), "%s in %p (response to BEGIN)",
-           neo4j_message_type_str(type), (void *)tx->connection);
 
 #ifndef NEOCLIENT_BUILD  
   if (type != NEO4J_SUCCESS_MESSAGE)
@@ -123,6 +121,9 @@ int begin_callback(void *cdata, neo4j_message_type_t type, const neo4j_value_t *
   if ( !MESSAGE_TYPE_IS(type,SUCCESS) )
 #endif
     {
+      char description[128];
+      snprintf(description, sizeof(description), "%s in %p (response to BEGIN)",
+               neo4j_message_type_str(type), (void *)tx->connection);
       neo4j_log_error(tx->logger, "Unexpected %s", description);
       tx->failed = 1;
       tx->failure = EPROTO;
@@ -184,9 +185,6 @@ int commit_callback(void *cdata, neo4j_message_type_t type, const neo4j_value_t 
       neo4j_log_trace(tx->logger, "tx commit ignored");
       return 0;
     }
-  char description[128];
-  snprintf(description, sizeof(description), "%s in %p (response to COMMIT)",
-           neo4j_message_type_str(type), (void *)tx->connection);
 
 #ifndef NEOCLIENT_BUILD  
   if (type != NEO4J_SUCCESS_MESSAGE)
@@ -194,6 +192,9 @@ int commit_callback(void *cdata, neo4j_message_type_t type, const neo4j_value_t 
   if ( !MESSAGE_TYPE_IS(type,SUCCESS) )
 #endif
     {
+      char description[128];
+      snprintf(description, sizeof(description), "%s in %p (response to COMMIT)",
+               neo4j_message_type_str(type), (void *)tx->connection);
       neo4j_log_error(tx->logger, "Unexpected %s", description);
       tx->failed = -1;
       tx->failure = EPROTO;
@@ -262,9 +263,6 @@ int rollback_callback(void *cdata, neo4j_message_type_t type, const neo4j_value_
       neo4j_log_trace(tx->logger, "tx rollback ignored");
       return 0;
     }
-  char description[128];
-  snprintf(description, sizeof(description), "%s in %p (response to ROLLBACK)",
-           neo4j_message_type_str(type), (void *)tx->connection);
 
 #ifndef NEOCLIENT_BUILD  
   if (type != NEO4J_SUCCESS_MESSAGE)
@@ -272,6 +270,9 @@ int rollback_callback(void *cdata, neo4j_message_type_t type, const neo4j_value_
   if ( !MESSAGE_TYPE_IS(type,SUCCESS) )
 #endif
     {
+      char description[128];
+      snprintf(description, sizeof(description), "%s in %p (response to ROLLBACK)",
+               neo4j_message_type_str(type), (void *)tx->connection);
       neo4j_log_error(tx->logger, "Unexpected %s", description);
       tx->failed = 1;
       fprintf(stderr,"Unexpected %s", description);
