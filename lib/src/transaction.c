@@ -28,6 +28,7 @@
 #include <stddef.h>
 #include <unistd.h>
 #include <stdio.h>
+#include "thread_local.h"
 
 neo4j_transaction_t *new_transaction(neo4j_config_t *config, neo4j_connection_t *connection, int timeout, const char *mode, const char *dbname);
 int begin_callback(void *cdata, neo4j_message_type_t type, const neo4j_value_t *argv, uint16_t argc);
@@ -503,7 +504,7 @@ const char *neo4j_tx_failure_code(neo4j_transaction_t *tx)
   if (neo4j_is_null(tx->failure_code)) {
     return "";
   }
-  char buf[128];
+  static THREAD_LOCAL char buf[128];
   return neo4j_string_value(tx->failure_code, buf, 128);
 }
 
