@@ -68,7 +68,7 @@ AC_DEFUN([AX_THREAD_LOCAL], [
   AS_IF([test "$ac_cv_tls" != "none"],
     [AC_DEFINE_UNQUOTED([THREAD_LOCAL],[$ac_cv_tls],[If the compiler supports a thread local storage class define it to that here])
      m4_ifnblank([$1],[$1])],
-    [m4_ifnblank([$2],[$2])
-    :
+    [AC_DEFINE([THREAD_LOCAL],[],[])
+     m4_ifnblank([$2],[$2])
     ])
 ])
