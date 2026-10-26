@@ -24,7 +24,6 @@
 #include "values.h"
 #include <assert.h>
 #include <stddef.h>
-#include "thread_local.h"
 
 #define NUM_XTRA_MAP_ENTS 6
 // making global to avoid disrupting the neo4j_run() signature

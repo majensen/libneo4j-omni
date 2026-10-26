@@ -33,7 +33,6 @@
 #include "util.h"
 #include <assert.h>
 #include <unistd.h>
-#include "thread_local.h"
 
 #ifndef __has_attribute
 #  define __has_attribute(x) 0  /* for GCC 4.8 and earlier */
